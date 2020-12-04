@@ -1,4 +1,4 @@
 variable "deployment_name" {
-  description = ""
+  description = "A prefix that is placed in front of resources - allowing for multiple deployments"
   type = string
 }
