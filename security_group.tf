@@ -1,7 +1,6 @@
 resource "aws_security_group" "FoundryServerSG" {
   name        = "${var.deployment_name}-FoundryServerSG"
   description = "Allow Traffic to and from foundry server"
-  vpc_id      = aws_vpc.main.id
 
   ingress {
     description = "-"
@@ -36,7 +35,7 @@ resource "aws_security_group" "FoundryServerSG" {
   }
 
   ingress {
-    description = "Foundry" inbound"
+    description = "Foundry inbound"
     from_port   = 33478
     to_port     = 33478
     protocol    = "tcp"
@@ -44,6 +43,7 @@ resource "aws_security_group" "FoundryServerSG" {
   }
 
   egress {
+    description = "Global outbound"
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
@@ -51,6 +51,6 @@ resource "aws_security_group" "FoundryServerSG" {
   }
 
   tags = {
-    Name = "allow_tls"
+    Name = "${var.deployment_name}-FoundryServerSG"
   }
 }
