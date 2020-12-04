@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "FoundryBucket" {
-  bucket = "${var.deployment_name}.foundry_bucket"
+  bucket = "${var.deployment_name}-foundry-bucket"
   acl    = "public-read"
 
   cors_rule {
@@ -10,6 +10,6 @@ resource "aws_s3_bucket" "FoundryBucket" {
   }
 
   tags = {
-    Name        = "${var.deployment_name}.foundry_bucket"
+    Name        = "${var.deployment_name}-foundry-bucket"
   }
 }
